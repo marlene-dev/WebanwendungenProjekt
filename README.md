@@ -1,0 +1,2 @@
+# WebanwendungenProjekt
+## Architektur
