@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ihre Seite</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <title>Nutzerdaten</title>
+  <link rel="stylesheet" href="userData.css">
+  <script src="userData.js"></script>
 </head>
 <body>
   <div class="login_container">
     <form v-if="!loggedIn" @submit.prevent="login" class="login_form">
       <div class="login_form_field">
-        <label for="email">Email:</label>
-        <input type="text" id="email" v-model="email" required />
-      </div>
-      <div class="login_form_field">
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required />
+      <div class="userDataContainer" id='userInfromation'>
+        <div class="userData">
+          <div id="name"></div>
+          <div id="email"></div>
+          <div id="street"></div>
+          <div id="town"></div>
+        </div>
+        <div v-else class="noLogIn" id="noLogIn" >
+          <div>Um Daten zu sehen bitte einloggen.</div>  
+        </div>
       </div>
       <button type="submit" class="login_form_button">Login</button>
       <p v-if="loginError" class="error_message">Incorrect email or password.</p>
@@ -31,5 +33,3 @@
   </div>
 </body>
 </html>
-
-
