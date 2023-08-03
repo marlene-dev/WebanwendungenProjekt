@@ -1,0 +1,46 @@
+.changeData_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.change_data_form {
+  width: 400px;
+  padding: 30px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+}
+
+.change_data_form_field {
+  margin-bottom: 28px;
+}
+
+.change_data_form_field label {
+  display: block;
+}
+
+.change_data_form_field input {
+  width: 95%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.save_form_button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 150%;
+  background-color: magenta;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.success_message {
+  text-align: center;
+}
+
+.success_message_text {
+  color: magenta;
+}

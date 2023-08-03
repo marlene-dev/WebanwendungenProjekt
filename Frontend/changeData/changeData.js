@@ -11,3 +11,6 @@ window.onload = function(){
     document.getElementById('street').innerHTML = address[0];
     document.getElementById('town').innerHTML = adress[1];
     }
+validate (){
+    
+}
