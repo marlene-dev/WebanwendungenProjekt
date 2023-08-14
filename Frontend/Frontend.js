@@ -1,0 +1,47 @@
+//Verhindert u.a. die Nutzung nicht deklarierter Variablen
+"use strict";
+
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("login-form");
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const daten = `${email}:${password}`;
+    const encryted = btoa(daten);
+    // Erstelle eine XMLHttpRequest-Instanz
+    const request = new XMLHttpRequest();
+
+    // URL für die Überprüfung
+    const url = "https://example.com/api/login";
+
+    // Öffne eine GET-Anfrage mit den codierten Anmeldeinformationen im Authorization-Header
+    request.open("POST", url);
+    request.setRequestHeader("Authorization", `Basic ${encryted}`);
+
+    request.send();
+
+    // Setze eine Callback-Funktion für die Antwort
+    request.onload = function () {
+      if (request.status === 200) {
+        console.log("Erfolgreich eingeloggt:", request.responseText);
+      } else {
+        console.error("Fehler beim Einloggen:", request.statusText);
+      }
+    };
+  });
+});
+
+window.onload = function(){
+    const name = "Angela Ziegler";
+    const email = "angela.ziegler@mail.com";
+    const address = ["Bahnhofstrasse 23", "8001", "Zürich", "Switzerland"];
+    const object = "help";
+    
+    document.getElementById('name').innerHTML = name;
+    document.getElementById('email').innerHTML = email;
+    document.getElementById('street').innerHTML = address[0];
+    document.getElementById('town').innerHTML = adress[1];
+  }
