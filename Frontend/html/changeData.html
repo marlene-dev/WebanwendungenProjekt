@@ -3,49 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>change Data</title>
-  <link rel="stylesheet" href="changeData.css">
-  <sc src="changeData.js"></script>
+  <title>Change Data</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="../Style.css">
+  <sc src="../Frontend.js"></script>
 </head>
 <body>
-    <div class="changeData_container">
-      <form onsubmit="return validate()" @submit.prevent="login" class="change_data_form">
-        <div class="change_data_form_field">
+    <div class="container">
+      <form onsubmit="return validate()" class="form">
+        <div class="form_field">
           <label for="name" >Name:</label>
           <input id="name" required />
         </div>
-        <div class="change_data_form_field">
+        <div class="form_field">
           <label for="email">Email:</label>
           <input type="text" id="email" v-model="email" required />
         </div>
-        <div class="change_data_form_field">
+        <div class="form_field">
           <label for="password">Password:</label>
           <input id="password" required />
         </div>
-        <div class="change_data_form_field">
+        <div class="form_field">
           <label for="street">Straße und Hausnummer:</label>
           <input id="street" required />
         </div>
-        <div class="change_data_form_field">
+        <div class="form_field">
           <label for="plz">Postleitzahl:</label>
           <input id="plz" required />
         </div>
-        <div class="change_data_form_field">
+        <div class="form_field">
           <label for="town">Stadt:</label>
           <input id="town" required />
         </div>
-        <div class="change_data_form_field">
+        <div class="form_field">
           <label for="country">Land:</label>
           <input id="country" required />
         </div>
-        <button type="submit" class="save_form_button">Speichern</button>
-        <p class="error_message">Änderungen konnten nicht gespeichert werden.</p>
-        <p class="success_message_text">Daten werden gespeichert.</p>
+        <button type="submit" class="form_button">Speichern</button>
+        <p class="error message">Änderungen konnten nicht gespeichert werden.</p>
+        <p class="success message">Daten werden gespeichert.</p>
       </form>
-  
-      <div v-if="loggedIn" class="success_message"> 
-        
-      </div>
     </div>
   </body>
 </html>

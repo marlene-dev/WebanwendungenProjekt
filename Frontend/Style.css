@@ -1,32 +1,39 @@
-.changeData_container {
+body {
+  font-family: "Roboto", sans-serif;
+}
+/* Common styles */
+.hidden{
+  display: none;
+}
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.change_data_form {
+.form {
   width: 400px;
   padding: 30px;
   background-color: #eeeeee;
   border-radius: 5px;
 }
 
-.change_data_form_field {
+.form_field {
   margin-bottom: 28px;
 }
 
-.change_data_form_field label {
+.form_field label {
   display: block;
 }
 
-.change_data_form_field input {
+.form_field input {
   width: 95%;
   padding: 10px;
   border-radius: 5px;
 }
 
-.save_form_button {
+.form_button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -36,11 +43,26 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
-.success_message {
+.message {
   text-align: center;
 }
+.error {
+  color: red;
+}
 
-.success_message_text {
+.success {
   color: magenta;
+}
+.userDetail {
+  margin-bottom: 20px;
+}
+
+.userDetail label {
+  font-weight: bold;
+}
+
+.userDetail div {
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 3px;
 }

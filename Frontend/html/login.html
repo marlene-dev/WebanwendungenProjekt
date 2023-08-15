@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ihre Seite</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../Style.css" />
+    <script src="../Frontend.js"></script>
+  </head>
+  <body>
+    <!-- LOGIN: hier kann sich der Nutzer einloggen -->
+    <div class="container">
+      <form class="form" id="login">
+        <div class="form_field">
+          <label for="email">Email:</label>
+          <input type="text" id="email" v-model="email" required />
+        </div>
+        <div class="form_field">
+          <label for="password">Password:</label>
+          <input type="password" id="password" v-model="password" required />
+        </div>
+        <button type="submit" class="form_button">
+          Login
+        </button>
+        <p class="error message">Incorrect email or password.</p>
+        <p class="success message">
+          Login erfolgreich! Willkommen, {{ loggedInEmail }}.
+        </p>
+      </form>
+      <!-- SHOW DATA: hier werden daten nach login angezeigt -->
+      <div class="form hidden" id="showData">
+        <div class="userData">
+          <div class="userDetail">
+            <label>Name:</label>
+            <div id="name"></div>
+          </div>
+          <div class="userDetail">
+            <label>Email:</label>
+            <div id="email"></div>
+          </div>
+          <div class="userDetail">
+            <label>Straße:</label>
+            <div id="street"></div>
+          </div>
+          <div class="userDetail">
+            <label>Stadt:</label>
+            <div id="town"></div>
+          </div>
+        </div>
+        <button type="submit" class="form_button" id="loginButton">Bearbeiten</button>
+        <button id="logout" class="form_button">Logout</button>
+        <p class="message error">
+          Aktion fehlgeschlagen. Bitte versuche es später nochmal.
+        </p>
+        <p class="message success">Aktion erfolgreich durchgeführt.</p>
+      </div>
+      <!-- CHANGE DATA: hier werden die Daten geändert -->
+      <form onsubmit="return validate()" class="form hidden">
+        <div class="form_field">
+          <label for="name">Name:</label>
+          <input id="name" required />
+        </div>
+        <div class="form_field">
+          <label for="email">Email:</label>
+          <input type="text" id="email" v-model="email" required />
+        </div>
+        <div class="form_field">
+          <label for="password">Password:</label>
+          <input id="password" required />
+        </div>
+        <div class="form_field">
+          <label for="street">Straße und Hausnummer:</label>
+          <input id="street" required />
+        </div>
+        <div class="form_field">
+          <label for="plz">Postleitzahl:</label>
+          <input id="plz" required />
+        </div>
+        <div class="form_field">
+          <label for="town">Stadt:</label>
+          <input id="town" required />
+        </div>
+        <div class="form_field">
+          <label for="country">Land:</label>
+          <input id="country" required />
+        </div>
+        <button type="submit" class="form_button">Speichern</button>
+        <p class="error message">
+          Änderungen konnten nicht gespeichert werden.
+        </p>
+        <p class="success message">Daten werden gespeichert.</p>
+      </form>
+    </div>
+  </body>
+</html>
