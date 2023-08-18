@@ -1,27 +1,36 @@
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$myDB = "mydb";
-
-try {
-$conn = new PDO("mysql:host=$hostname;dbname=$myDB", $username, $password);
-echo "Connected successfully";
-} catch(PDOException $e) {
-echo "Connection failed: " . $e->getMessage();
-}
+include 'connectToDatabase.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (isset($_POST["name"])) {
-    $input_name = $_POST['name'];
+    session_start();
+    if (!isset($_SESSION["userId"])) {
+        header("Location: Frontend/login.html");   
+        exit(); 
     }
-    $input_email = $_POST["email"];
-    $input_street = $_POST["street"];
-    $input_plz = $_POST["plz"];
-    $input_town = $_POST["town"];
-    $input_country = $_POST["country"];
 
+    if (isset($_POST["username"])) {
+    $input_username = $_POST['username'];
+    }
+    if (isset($_POST["email"])) {
+    $input_email = $_POST["email"];
+    }
+    if (isset($_POST["streetname"])) {
+    $input_street = $_POST["streetname"];
+    }
+    if (isset($_POST["plz"])) {
+    $input_plz = $_POST["plz"];
+    }
+    if (isset($_POST["town"])) {
+    $input_town = $_POST["town"];
+    }
+    if (isset($_POST["country"])) {
+    $input_country = $_POST["country"];
+    }
+
+
+
+    /*
     try {
         $sql = "SELECT * FROM userdata";
         $query = $conn->query($sql);
@@ -31,10 +40,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
+*/
+
+        // the list of allowed field names
+    $allowed = ["id","username","streetname","email"];
+
+    // initialize an array with values:
+    $params = [];
+
+    // initialize a string with `fieldname` = :placeholder pairs
+    $setStr = "";
+
+    // loop over source data array
+    foreach ($allowed as $key) {
+        if (isset($_POST[$key]) && $key != "id")
+        {
+            $setStr .= "`$key` = :$key,";
+            $params[$key] = $_POST[$key];
+        }
+    }
+    $setStr = rtrim($setStr, ",");
+
+    $params['id'] = Sess;
+
+    try {
+        $conn->prepare("UPDATE userdata SET $setStr WHERE id = :id")->execute($params);
+        // Response from server to JS as Text
+        echo "Die Änderungen wurden gespeichert.";
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+/*
+    try {
+        $sql = "SELECT * FROM userdata";
+        $query = $conn->query($sql);
+        foreach ($query as $row) {
+        echo "<br/>" . $row["username"] . " "  . $row["email"]. " " . $row["streetname"];
+        }
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+*/
+
     $conn = null;
 }
-
-
-
-
 ?>
