@@ -7,16 +7,15 @@ const loginButton = document.getElementById('loginButton');
 
 
 // Add a click event listener to the button
-function changeForm(hide, show) {
-  const showElement = document.getElementById(show);
+function hide(hide) {
   const hideElement = document.getElementById(hide);
   // Change the HTML file displayed
-  showElement.classList.toggle('hidden'); 
   hideElement.classList.add('hidden');
 }
 
-function checkForm(){
-
+function show(show){
+  const showElement = document.getElementById(show);
+  showElement.classList.remove('hidden'); 
 }
 
 // document.addEventListener("DOMContentLoaded", function () {
