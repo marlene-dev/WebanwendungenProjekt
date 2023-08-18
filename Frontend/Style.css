@@ -3,7 +3,7 @@ body {
 }
 /* Common styles */
 .hidden{
-  display: none;
+  display: none !important;
 }
 .container {
   display: flex;
