@@ -14,16 +14,16 @@
   <body>
     <!-- LOGIN: hier kann sich der Nutzer einloggen -->
     <div class="container">
-      <form class="form" id="login">
+      <form class="form" id="loginForm" method="post" action="../../Backend/saveInDatabase.php">
         <div class="form_field">
           <label for="email">Email:</label>
-          <input type="text" id="email" v-model="email" required />
+          <input type="text" id="emailInput" required />
         </div>
         <div class="form_field">
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" required />
+          <input type="password" id="passwordInput" required />
         </div>
-        <button type="submit" class="form_button">
+        <button type="submit" class="form_button" onclick="changeForm('loginForm','userData')">
           Login
         </button>
         <p class="error message">Incorrect email or password.</p>
@@ -32,7 +32,7 @@
         </p>
       </form>
       <!-- SHOW DATA: hier werden daten nach login angezeigt -->
-      <div class="form hidden" id="showData">
+      <div class="form hidden" id="userData">
         <div class="userData">
           <div class="userDetail">
             <label>Name:</label>
@@ -51,26 +51,26 @@
             <div id="town"></div>
           </div>
         </div>
-        <button type="submit" class="form_button" id="loginButton">Bearbeiten</button>
-        <button id="logout" class="form_button">Logout</button>
+        <button class="form_button" id="loginButton" onclick="changeForm('userData','changeData')">Bearbeiten</button>
+        <button id="logout" class="form_button" onclick="changeForm('userData','loginForm')">Logout</button>
         <p class="message error">
           Aktion fehlgeschlagen. Bitte versuche es später nochmal.
         </p>
         <p class="message success">Aktion erfolgreich durchgeführt.</p>
       </div>
       <!-- CHANGE DATA: hier werden die Daten geändert -->
-      <form onsubmit="return validate()" class="form hidden">
+      <form onsubmit="return validate()" class="form hidden" id="changeData">
         <div class="form_field">
           <label for="name">Name:</label>
           <input id="name" required />
         </div>
         <div class="form_field">
           <label for="email">Email:</label>
-          <input type="text" id="email" v-model="email" required />
+          <input type="text" id="email" required />
         </div>
         <div class="form_field">
           <label for="password">Password:</label>
-          <input id="password" required />
+          <input id="passwordChange" required />
         </div>
         <div class="form_field">
           <label for="street">Straße und Hausnummer:</label>
@@ -88,7 +88,7 @@
           <label for="country">Land:</label>
           <input id="country" required />
         </div>
-        <button type="submit" class="form_button">Speichern</button>
+        <button type="submit" class="form_button" onclick="changeForm('changeData','userData')">Speichern</button>
         <p class="error message">
           Änderungen konnten nicht gespeichert werden.
         </p>

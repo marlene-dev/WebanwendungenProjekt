@@ -4,13 +4,20 @@
 //successful login --delete later
 // Add a click event listener to the button
 const loginButton = document.getElementById('loginButton');
-const userData = document.getElementById('userData');
+
 
 // Add a click event listener to the button
-loginButton.addEventListener('click', function() {
+function changeForm(hide, show) {
+  const showElement = document.getElementById(show);
+  const hideElement = document.getElementById(hide);
   // Change the HTML file displayed
-  userData.classList.toggle('hidden'); 
-});
+  showElement.classList.toggle('hidden'); 
+  hideElement.classList.add('hidden');
+}
+
+function checkForm(){
+
+}
 
 // document.addEventListener("DOMContentLoaded", function () {
 //   const loginForm = document.getElementById("login-form");
