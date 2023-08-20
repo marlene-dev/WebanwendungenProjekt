@@ -3,7 +3,7 @@ include 'connectToDatabase.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    session_start();
+ /*   session_start();
     if (!isset($_SESSION["userId"])) {
         // Setze den HTTP-Statuscode auf 401 Unauthorized
         http_response_code(401);  
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Zugriff verweigert. Bitte loggen Sie sich ein.";
         exit(); 
     }
-
+*/
     if (isset($_POST["username"])) {
     $input_username = $_POST['username'];
     }
@@ -34,22 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_country = $_POST["country"];
     }
 
-
-
-    /*
-    try {
-        $sql = "SELECT * FROM userdata";
-        $query = $conn->query($sql);
-        foreach ($query as $row) {
-        echo "<br/>" . $row["username"] . " "  . $row["email"]. " " . $row["streetname"];
-        }
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-*/
-
         // the list of allowed field names
-    $allowed = ["id","username","streetname","email"];
+    $allowed = ["id","username","email", "streetname", "streetnumber"];  //, "plz", "town", "country"
 
     // initialize an array with values:
     $params = [];
@@ -67,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $setStr = rtrim($setStr, ",");
 
-    $params['id'] = $_SESSION["userId"];
+    $params['id'] = "1"; //$_SESSION["userId"];
 
     try {
         $conn->prepare("UPDATE userdata SET $setStr WHERE id = :id")->execute($params);
@@ -76,18 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-/*
-    try {
-        $sql = "SELECT * FROM userdata";
-        $query = $conn->query($sql);
-        foreach ($query as $row) {
-        echo "<br/>" . $row["username"] . " "  . $row["email"]. " " . $row["streetname"];
-        }
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-*/
-
     $conn = null;
 }
 ?>
