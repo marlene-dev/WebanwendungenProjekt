@@ -5,7 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     session_start();
     if (!isset($_SESSION["userId"])) {
-        header("Location: Frontend/login.html");   
+        // Setze den HTTP-Statuscode auf 401 Unauthorized
+        http_response_code(401);  
+        // Zeige eine Fehlermeldung oder eine Erklärung an den Benutzer
+        echo "Zugriff verweigert. Bitte loggen Sie sich ein.";
         exit(); 
     }
 
@@ -17,6 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (isset($_POST["streetname"])) {
     $input_street = $_POST["streetname"];
+    }
+    if (isset($_POST["number"])) {
+        $input_street = $_POST["number"];
     }
     if (isset($_POST["plz"])) {
     $input_plz = $_POST["plz"];
