@@ -1,6 +1,9 @@
 //Verhindert u.a. die Nutzung nicht deklarierter Variablen
 "use strict";
+//leave
+window.location.replace("/login/");
 
+//delete
 const name = "Angela Ziegler";
 const email = "angela.ziegler@mail.com";
 const address = ["Bahnhofstrasse ", "23", "8001", "Zürich", "Switzerland"];
@@ -20,23 +23,12 @@ function show(show) {
   showElement.classList.remove("hidden");
 }
 
+//window.open(link)
+
 //überprüft ob alle Felder von einer Form auf ihre Ausgefülltheit
 // Feld leer dann error
-function areAllFieldsEmpty(showId, formId, textId) {
-  console.log("funktion called");
-  const form = document.getElementById(formId);
-
-  const fields = form.querySelectorAll("input");
-
-  for (const field of fields) {
-    if (field.value.trim() !== "") {
-      show(textId);
-      return;
-    }
-  }
-  hide(textId);
-  hide(formId);
-  show(showId);
+function submit() {
+  const form = document.getElementById('loginForm');
   // Wenn alle Felder leer sind, wechselt die Seite
 }
 
