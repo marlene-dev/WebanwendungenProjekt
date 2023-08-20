@@ -1,21 +1,38 @@
 //Verhindert u.a. die Nutzung nicht deklarierter Variablen
 "use strict";
 
-//successful login --delete later
-// Add a click event listener to the button
-const loginButton = document.getElementById('loginButton');
-
-
-// Add a click event listener to the button
+// wird genutzt damit elemente auf website nicht angezeigt werden 
+//BSP.: wenn die "Seite" gewechselt wird
 function hide(hide) {
   const hideElement = document.getElementById(hide);
   // Change the HTML file displayed
   hideElement.classList.add('hidden');
 }
+//zwigt Elemente auf Website die vorher verborgen waren
 
 function show(show){
   const showElement = document.getElementById(show);
   showElement.classList.remove('hidden'); 
+}
+
+//überprüft ob alle Felder von einer Form auf ihre Ausgefülltheit
+// Feld leer dann error 
+function areAllFieldsEmpty(showId, formId, textId) {
+  console.log("funktion called")
+  const form = document.getElementById(formId);
+
+  const fields = form.querySelectorAll('input');
+
+  for (const field of fields) {
+    if (field.value.trim() !== '') {
+      show(textId);
+      return;
+    }
+  }
+  hide(textId);
+  hide(formId);
+  show(showId);
+  // Wenn alle Felder leer sind, wechselt die Seite
 }
 
 // document.addEventListener("DOMContentLoaded", function () {

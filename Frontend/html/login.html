@@ -23,12 +23,12 @@
           <label for="password">Password:</label>
           <input type="password" id="passwordInput" required />
         </div>
-        <button type="submit" class="form_button" onclick="show('userData'), hide('loginForm')">
+        <!-- Funktion verarbeitet ob alle Felder ausgefüllt wurden wenn erfüllt > weiterleitung. Daten in Klammer (zu seigendes Element, zu überprüfendes Element, error Message wenn test fehlschlägt) -->
+        <button type="submit" class="form_button" onclick="areAllFieldsEmpty('userData','loginForm', 'requestFormLogin')">
           Login
         </button>
-        <p class="error message hidden" id="requestPasswort">Bitte geben Sie Ihr Passwort ein.</p>
         <p class="error message hidden">Bitte geben Sie Ihre E-Mail ein.</p>
-        <p class="error message hidden">Incorrect email or password.</p>
+        <p class="error message hidden" id="requestFormLogin">Bitte füllen Sie alle Felder aus.</p>
         <p class="error message hidden">Incorrect email or password.</p>
         <p class="success message hidden">
           Login erfolgreich! Willkommen, {{ loggedInEmail }}.
