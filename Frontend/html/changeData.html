@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-      <form onsubmit="return validate()" class="form">
+      <form onsubmit="return validate()" class="form" method="post" action="../../Backend/saveInDatabase.php">
         <div class="form_field">
           <label for="name" >Name:</label>
           <input id="name" required />
@@ -39,7 +39,7 @@
           <label for="country">Land:</label>
           <input id="country" required />
         </div>
-        <button type="submit" class="form_button">Speichern</button>
+        <button onclick="checkForm()" class="form_button">Speichern</button>
         <p class="error message">Änderungen konnten nicht gespeichert werden.</p>
         <p class="success message">Daten werden gespeichert.</p>
       </form>

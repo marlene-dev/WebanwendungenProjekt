@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $setStr = rtrim($setStr, ",");
 
-    $params['id'] = Sess;
+    $params['id'] = $_SESSION["userId"];
 
     try {
         $conn->prepare("UPDATE userdata SET $setStr WHERE id = :id")->execute($params);
