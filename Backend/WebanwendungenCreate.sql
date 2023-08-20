@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`city` (
   `cityname` VARCHAR(45) NOT NULL,
   `plz` CHAR(5) NOT NULL,
   PRIMARY KEY (`city_id`),
-  UNIQUE INDEX `city_id_UNIQUE` (`city_id` ASC) VISIBLE)
+  UNIQUE INDEX `city_id_UNIQUE` (`city_id` ASC) )
 ENGINE = InnoDB;
 
 
@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`userdata` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`userdata` (
+CREATE TABLE IF NOT EXISTS `mydb`.`userdata` (x
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` BINARY(64) NOT NULL,
@@ -46,15 +46,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`userdata` (
   `streetnumber` VARCHAR(10) NOT NULL,
   `profilepicture` VARCHAR(200) NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `city_id_UNIQUE` (`city_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  UNIQUE INDEX `city_id_UNIQUE` (`city_id` ASC) ,
   CONSTRAINT `city_id`
     FOREIGN KEY (`id`)
     REFERENCES `mydb`.`city` (`city_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

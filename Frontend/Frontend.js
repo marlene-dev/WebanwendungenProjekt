@@ -1,6 +1,11 @@
 //Verhindert u.a. die Nutzung nicht deklarierter Variablen
 "use strict";
 
+const name = "Angela Ziegler";
+const email = "angela.ziegler@mail.com";
+const address = ["Bahnhofstrasse ","23", "8001", "Zürich", "Switzerland"];
+const object = "help";
+
 // wird genutzt damit elemente auf website nicht angezeigt werden 
 //BSP.: wenn die "Seite" gewechselt wird
 function hide(hide) {
@@ -68,14 +73,10 @@ function areAllFieldsEmpty(showId, formId, textId) {
 //   });
 // });
 
-window.onload = function(){
-    const name = "Angela Ziegler";
-    const email = "angela.ziegler@mail.com";
-    const address = ["Bahnhofstrasse 23", "8001", "Zürich", "Switzerland"];
-    const object = "help";
-    
+window.onload = function(){ 
     document.getElementById('name').innerHTML = name;
     document.getElementById('email').innerHTML = email;
     document.getElementById('street').innerHTML = address[0];
+    document.getElementById('number').innerHTML = address[1];    
     document.getElementById('town').innerHTML = address[2];
   }
