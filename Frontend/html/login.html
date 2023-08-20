@@ -17,7 +17,7 @@
       <form class="form" id="loginForm">
         <div class="form_field">
           <label for="email">Email:</label>
-          <input type="text" id="emailInput" required />
+          <input type="email" id="emailInput" required />
         </div>
         <div class="form_field">
           <label for="password">Password:</label>
@@ -50,6 +50,14 @@
             <div id="street"></div>
           </div>
           <div class="userDetail">
+            <label>Hausnummer:</label>
+            <div id="number"></div>
+          </div>
+          <div class="userDetail">
+            <label>Postleitzahl:</label>
+            <div id="plz"></div>
+          </div>
+          <div class="userDetail">
             <label>Stadt:</label>
             <div id="town"></div>
           </div>
@@ -69,15 +77,19 @@
         </div>
         <div class="form_field">
           <label for="email">Email:</label>
-          <input type="text" id="email" required />
+          <input type="email" id="email" required />
         </div>
         <div class="form_field">
           <label for="password">Password:</label>
           <input id="passwordChange" required />
         </div>
         <div class="form_field">
-          <label for="street">Straße und Hausnummer:</label>
+          <label for="street">Straße</label>
           <input id="street" required />
+        </div>
+        <div class="form_field">
+          <label for="number">Hausnummer</label>
+          <input id="number" required />
         </div>
         <div class="form_field">
           <label for="plz">Postleitzahl:</label>
