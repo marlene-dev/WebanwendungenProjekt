@@ -36,12 +36,11 @@
         <div id="town"></div>
       </div>
     </div>
-    <button class="form_button" id="loginButton" onclick="">Bearbeiten</button>
-    <button id="logout" class="form_button" onclick="">Logout</button>
-    <p class="message error hidden">
+    <button class="form_button" onclick="changeData()">Bearbeiten</button>
+    <button class="form_button" onclick="terminateSession()">Logout</button>
+    <p class="message error hidden" id="errorMessage">
       Aktion fehlgeschlagen. Bitte versuche es später nochmal.
     </p>
-    <p class="message success hidden">Aktion erfolgreich durchgeführt.</p>
   </div>
   </div>
 </body>
