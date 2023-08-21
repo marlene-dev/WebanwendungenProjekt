@@ -19,7 +19,7 @@ if (isset($_SESSION["userId"])){
       $arrayData = ["username" => $resultUserdata["username"], 
                     "email" => $resultUserdata["email"], 
                     "streetname" => $resultUserdata["streetname"],
-                    "streenumber" => $resultUserdata["streetnumber"],
+                    "streetnumber" => $resultUserdata["streetnumber"],
                     "plz" => $resultCity["plz"],
                     "town" => $resultCity["cityname"],
                     "profilepicture" => $resultUserdata["profilepicture"],
