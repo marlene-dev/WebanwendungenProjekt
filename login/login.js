@@ -3,22 +3,24 @@ function hide(hide) {
   // Change the HTML file displayed
   hideElement.classList.add("hidden");
 }
-//zwigt Elemente auf Website die vorher verborgen waren
+//zwingt Elemente auf Website die vorher verborgen waren
 
 function show(show) {
   const showElement = document.getElementById(show);
   showElement.classList.remove("hidden");
 }
 
-function sendLogin() {
+function submit() {
   // Erstelle eine XMLHttpRequest-Instanz
   const request = new XMLHttpRequest();
   const data = {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
   };
-  //backend Aufruf
   request.open("POST", "Backend/login.php");
+  //maybe change to line 34 ? 
+  request.send(JSON.stringify(data));
+
   // Setze eine Callback-Funktion für die Antwort
   request.onload = function () {
     if (request.status === 200) {
