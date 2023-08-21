@@ -6,7 +6,7 @@ if (isset($_SESSION["userId"])){
   try {
       // Select all Userdata
       $sqlUser = "SELECT * FROM userdata WHERE id = $userId";
-      $stmtUser->execute($sqlUser);
+      $stmtUser = $conn->query($sqlUser);
       $resultUserdata = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
       // Select City with ID from Userdata
@@ -21,7 +21,7 @@ if (isset($_SESSION["userId"])){
                     "streetname" => $resultUserdata["streetname"],
                     "streenumber" => $resultUserdata["streetnumber"],
                     "plz" => $resultCity["plz"],
-                    "town" => $resultCity["town"],
+                    "town" => $resultCity["cityname"],
                     "profilepicture" => $resultUserdata["profilepicture"],
                   ];
 
