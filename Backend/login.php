@@ -1,81 +1,50 @@
 <?php
 
-include 'connectToDatabase.php';
-
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Empfange und dekodiere die JSON-Daten
+    $requestData = json_decode(file_get_contents("php://input"), true);
 
-    if (isset($_POST["email"])) {
-    $input_email = $_POST["email"];
-    } else {
-        // Setze den HTTP-Statuscode 
+    if (isset($requestData["email"]) && isset($requestData["password"])) {
+
+        $input_email = $requestData["email"];
+        $input_password = $requestData["password"];
+
+        include 'connectToDatabase.php';
+        try {
+            // Select all Userdata
+            $sqlUser = "SELECT id FROM userdata WHERE email = :email AND password = SHA2(:password, 256)";
+            $stmt = $conn->prepare($sqlUser);
+            $param = [
+                ':email' => $input_email,
+                ':password' => $input_password
+            ];
+            $stmt->execute($param);
+            $resultUserdata = $stmt->fetch(PDO::FETCH_ASSOC);
+            // Anzahl der zurückgegebenen Zeilen überprüfen
+            if ($stmt->rowCount() > 0) {
+                http_response_code(200);  
+                $response = array("message" => "Login war erfolgreich.");
+                // öffne Session für login
+                startSession($result["id"]);
+            } else {
+                http_response_code(400);  
+                $response = array("message" => "Es gibt keinen User mit diesen Login-Daten.");
+            }
+        } catch(PDOException $e) {
+            http_response_code(400);  
+            $response = array("message" => "Fehler bei SQL Abfrage");
+        }  
+    }else {
         http_response_code(400);  
-        echo "Zugriff verweigert. Die Email fehlt";    }
-    if (isset($_POST["password"])) {
-    $input_password = $_POST["password"];
-    } else {
-        // Setze den HTTP-Statuscode 
-        http_response_code(400);  
-        echo "Zugriff verweigert. Das Passwort fehlt";    }
-
-
-    try {
-        $sql = "SELECT * FROM userdata WHERE email = :email AND password = SHA2(:password, 256)";
-        $stmt = $conn->prepare($sql);
-        $param = [
-            ':email' => $input_email,
-            ':password' => $input_password
-        ];
-        $stmt->execute($param);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        startSession($result["id"]);
-        //initialize testarray for JSON response
-        $arrayData = ["username" => $input_username, "password" => $input_password];
-        // do whatever we want with the users array.
-        header('Content-type: application/json');
-        echo json_encode( $arrayData );
-
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-
-
-if (isset($_POST["username"])) {
-    $input_username = $_POST['username'];
-    }
-    if (isset($_POST["email"])) {
-    $input_email = $_POST["email"];
-    }
-    if (isset($_POST["streetname"])) {
-    $input_street = $_POST["streetname"];
-    }
-    if (isset($_POST["number"])) {
-        $input_street = $_POST["number"];
-        }
-    if (isset($_POST["plz"])) {
-    $input_plz = $_POST["plz"];
-    }
-    if (isset($_POST["town"])) {
-    $input_town = $_POST["town"];
-    }
-    if (isset($_POST["country"])) {
-    $input_country = $_POST["country"];
-    }
-
-$arrayDataTest = ["username" => "testName", 
-"email" => "testEmail",
-"streetname" => "testStreet",
-"number" => "123",
-"plz" => "testPlz",
-"town" => "testTown",
-"country" => "testEngland"
-];
-// do whatever we want with the users array.
-header('Content-type: application/json');
-echo json_encode( $arrayDataTest );
+        $response = array("message" => "Zugriff verweigert. Die Email oder das Passwort ist ungültig");
+    } 
+} else {
+    $response = array("message" => "Ungültige HTTP-Anfrage");
+    http_response_code(405);
 }
 
-$conn = null;
+// Setze den Content-Type und gib die JSON-Antwort aus
+header("Content-Type: application/json");
+echo json_encode($response);
+
 ?>

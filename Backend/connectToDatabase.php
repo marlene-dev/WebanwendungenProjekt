@@ -9,7 +9,10 @@ try {
 $conn = new PDO("mysql:host=$hostname;dbname=$myDB", $userName, $password);
 //echo "Connected successfully";
 } catch(PDOException $e) {
-echo "Connection failed: " . $e->getMessage();
+    // Setze den HTTP-Statuscode auf 404 Connection error
+    http_response_code(404);  
+    echo "Connection to Database failed: " . $e->getMessage();
+    exit();
 }
 
 function closeDatabase() {
