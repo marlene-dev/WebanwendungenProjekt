@@ -1,4 +1,5 @@
-function terminateSession (){
+document.getElementById("logout").addEventListener("submit", (e) => {
+    e.preventDefault();
         // Create a new XMLHttpRequest instance
         const request = new XMLHttpRequest();
 
@@ -18,7 +19,7 @@ function terminateSession (){
     
         // Send the request
         request.send();    
-}
+});
 function changeData(){
     window.location.replace("/changeData/");
 }
