@@ -6,7 +6,7 @@
   <title>Nutzerdaten bearbeiten</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
   <link rel="stylesheet" href="../Style.css">
-  <script src="../Frontend.js"></script>
+  <script src="../userData/"></script>
 </head>
 <body>
   <div class="form" id="userData">
@@ -36,8 +36,8 @@
         <div id="town"></div>
       </div>
     </div>
-    <button class="form_button" id="logout">Bearbeiten</button>
-    <button class="form_button" onclick="terminateSession()">Logout</button>
+    <button class="form_button" onclick="changeData()">Bearbeiten</button>
+    <button class="form_button" id="logout">Logout</button>
     <p class="message error hidden" id="errorMessage">
       Aktion fehlgeschlagen. Bitte versuche es später nochmal.
     </p>
