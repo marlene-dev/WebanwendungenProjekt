@@ -47,9 +47,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`userdata` (x
   `profilepicture` VARCHAR(200) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
-  UNIQUE INDEX `city_id_UNIQUE` (`city_id` ASC) ,
   CONSTRAINT `city_id`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`city_id`)
     REFERENCES `mydb`.`city` (`city_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
