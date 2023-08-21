@@ -4,7 +4,7 @@ document.getElementById("logout").addEventListener("submit", (e) => {
         const request = new XMLHttpRequest();
 
         // Configure the request: Method and URL
-        request.open("GET", "Backend/logout.php", true);
+        request.open("GET", "/Backend/logout.php", true);
     
         // Set up a callback function to handle the response
         request.onload = function() {
