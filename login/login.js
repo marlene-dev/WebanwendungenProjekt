@@ -18,9 +18,6 @@ function sendLogin() {
     password: document.getElementById("password").value,
   };
   request.open("POST", "Backend/login.php");
-  //maybe change to line 34 ? 
-  request.send(JSON.stringify(data));
-
   // Setze eine Callback-Funktion für die Antwort
   request.onload = function () {
     if (request.status === 200) {
