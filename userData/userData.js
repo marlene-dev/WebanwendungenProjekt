@@ -1,10 +1,11 @@
-document.getElementById("logout").addEventListener("submit", (e) => {
+document.addEventListener("DOMContentLoaded", function() {
+document.getElementById("logout").addEventListener("click", (e) => {
     e.preventDefault();
         // Create a new XMLHttpRequest instance
         const request = new XMLHttpRequest();
 
         // Configure the request: Method and URL
-        request.open("GET", "Backend/logout.php", true);
+        request.open("GET", "/Backend/logout.php", true);
     
         // Set up a callback function to handle the response
         request.onload = function() {
@@ -23,3 +24,4 @@ document.getElementById("logout").addEventListener("submit", (e) => {
 function changeData(){
     window.location.replace("/changeData/");
 }
+});
