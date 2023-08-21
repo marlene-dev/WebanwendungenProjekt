@@ -10,7 +10,7 @@ function show(show) {
   showElement.classList.remove("hidden");
 }
 
-function submit() {
+function sendLogin() {
   // Erstelle eine XMLHttpRequest-Instanz
   const request = new XMLHttpRequest();
   const data = {
