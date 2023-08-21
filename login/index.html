@@ -14,14 +14,14 @@
   <body>
     <!-- LOGIN: hier kann sich der Nutzer einloggen -->
     <div class="container">
-      <form class="form" id="loginForm" onsubmit="submit()">
+      <form class="form" id="loginForm" onsubmit="sendLogin()">
         <div class="form_field">
           <label for="email">Email:</label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" maxlength="100" required />
         </div>
         <div class="form_field">
           <label for="password">Password:</label>
-          <input type="password" id="password" required />
+          <input type="password" id="password" maxlength="100" required />
         </div>
         <!-- Funktion verarbeitet ob alle Felder ausgefüllt wurden wenn erfüllt > weiterleitung. Daten in Klammer (zu seigendes Element, zu überprüfendes Element, error Message wenn test fehlschlägt) -->
         <button type="submit" class="form_button">

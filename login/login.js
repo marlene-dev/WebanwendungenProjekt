@@ -10,18 +10,15 @@ function show(show) {
   showElement.classList.remove("hidden");
 }
 
-function submit() {
+function sendLogin() {
   // Erstelle eine XMLHttpRequest-Instanz
   const request = new XMLHttpRequest();
-
   const data = {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
   };
+  //backend Aufruf
   request.open("POST", "Backend/login.php");
-  //maybe change to line 34 ? 
-  request.send(JSON.stringify(data));
-
   // Setze eine Callback-Funktion für die Antwort
   request.onload = function () {
     if (request.status === 200) {
@@ -31,4 +28,5 @@ function submit() {
       document.getElementById('errorLogin').classList.remove("hidden");
     }
   };
+  request.send(JSON.stringify(data));
 }
