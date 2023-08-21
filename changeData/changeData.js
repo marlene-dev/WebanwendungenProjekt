@@ -8,8 +8,7 @@ document.getElementById("sendChange").addEventListener("submit", (e) => {
     number: document.getElementById("number").value,
     plz: document.getElementById("plz").value,
     town: document.getElementById("town").value,
-    country: document.getElementById("country").value
-      };
+    };
     // Configure the request: Method and URL
     request.open("GET", "/Backend/saveInDatabase.php", true);
 
