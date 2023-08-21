@@ -48,19 +48,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             //UPDATE userdata in Database
             $conn->prepare("UPDATE userdata SET $setStr WHERE id = :id")->execute($params);
+
             // update City in Database
             $userId = $_SESSION["userId"];
             $sqlCity = "SELECT city_id FROM city WHERE town = $input_town AND plz = $input_plz";
             $stmt = $conn->query($sqlCity);
-            
             // Anzahl der zurückgegebenen Zeilen überprüfen
             if ($stmt->rowCount() > 0) {
                 $rightCity = $stmt->fetch(PDO::FETCH_ASSOC);
                 $newCityId = $rightCity["city_Id"];
             } else {
-                $conn->prepare("INSERT INTO city (cityname, plz) VALUES ($input_town, $input_plz");
+                $conn->prepare("INSERT INTO city (cityname, plz) VALUES ($input_town, $input_plz")->execute();
+                $stmt = $conn->query($sqlCity);
+                $rightCity = $stmt->fetch(PDO::FETCH_ASSOC);
+                $newCityId = $rightCity["city_Id"];
             }
-            $conn->prepare("UPDATE city SET $setStr WHERE id = :id")->execute($params);
+            $conn->prepare("UPDATE userdata SET city_id = $newCityId WHERE id = :id")->execute($params);
+
+            //UPDATE erfolgreich
             http_response_code(200);  
             $response = array("message" => "Die Änderung war erfolgreich.");
         } catch(PDOException $e) {
