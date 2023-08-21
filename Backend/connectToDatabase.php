@@ -21,7 +21,7 @@ function closeDatabase() {
 
 function startSession( $userId) {
     session_start();
-    $_SERVER["userId"] = $userId;
+    $_SESSION["userId"] = $userId;
 }
 
 function destroySession () {
