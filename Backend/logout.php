@@ -8,6 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     http_response_code(200); 
     header("Content-Type: application/json");
     echo json_encode(array("message" => "Sie wurden erfolgreich abgemeldet"));
+} else {
+    $response = array("message" => "Ungültige HTTP-Anfrage");
+    header("Content-Type: application/json");
+    echo json_encode($response);
+    http_response_code(405);
 }
 
 ?>
