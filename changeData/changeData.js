@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       request.onload = function () {
         if (request.status === 200) {
           console.log("Daten wurden geändert");
+          alert("geänderte Daten wurden gespeichert.")
           window.location.replace("/userData/");
         } else {
           document.getElementById("badPlz").classList.add("hidden");
