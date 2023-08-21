@@ -5,11 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $requestData = json_decode(file_get_contents("php://input"), true);
 
     if (isset($requestData["email"]) && isset($requestData["password"])) {
-
+        include 'connectToDatabase.php';
         $input_email = $requestData["email"];
         $input_password = $requestData["password"];
 
-        include 'connectToDatabase.php';
         try {
             // Select all Userdata
             $sqlUser = "SELECT id FROM userdata WHERE email = :email AND password = SHA2(:password, 256)";
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':password' => $input_password
             ];
             $stmt->execute($param);
-            $resultUserdata = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
             // Anzahl der zurückgegebenen Zeilen überprüfen
             if ($stmt->rowCount() > 0) {
                 http_response_code(200);  
@@ -34,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             http_response_code(400);  
             $response = array("message" => "Fehler bei SQL Abfrage");
         }  
+        $conn = null;
     }else {
         http_response_code(400);  
         $response = array("message" => "Zugriff verweigert. Die Email oder das Passwort ist ungültig");
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(405);
 }
 
-// Setze den Content-Type und gib die JSON-Antwort aus
+// Setzt den Content-Type und gibt die JSON-Antwort aus
 header("Content-Type: application/json");
 echo json_encode($response);
 
