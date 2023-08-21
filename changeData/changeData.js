@@ -1,18 +1,16 @@
 function sendChange (){
     // Create a new XMLHttpRequest instance
     const request = new XMLHttpRequest();
+
     const data = {
-    //     document.getElementById("email").value;
-    //   document.getElementById("password").value;
-    //   // Similarly, update other input fields using their IDs and userData properties
-    //   document.getElementById("street").value;
-    //   document.getElementById("number").value;
-    //   document.getElementById("plz").value;
-    //   document.getElementById("town").value;
-    //   document.getElementById("country");
+    street: document.getElementById("street").value,
+    number: document.getElementById("number").value,
+    plz: document.getElementById("plz").value,
+    town: document.getElementById("town").value,
+    country: document.getElementById("country").value
       };
     // Configure the request: Method and URL
-    request.open("GET", "Backend/getUserdata.php", true);
+    request.open("GET", "/Backend/saveInDatabase.php", true);
 
     // Set up a callback function to handle the response
     request.onload = function() {
@@ -25,7 +23,7 @@ function sendChange (){
     };
 
     // Send the request
-    request.send();    
+    request.send(JSON.stringify(data));    
 }
 
 function exitEdit(){
