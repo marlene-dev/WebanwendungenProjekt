@@ -6,7 +6,7 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
   };
-  request.open("POST", "Backend/login.php");
+  request.open("POST", "/Backend/login.php");
   // Setze eine Callback-Funktion für die Antwort
   request.onload = function () {
     if (request.status === 200) {

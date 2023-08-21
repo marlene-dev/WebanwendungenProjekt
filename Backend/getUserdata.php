@@ -6,13 +6,13 @@ if (isset($_SESSION["userId"])){
   try {
       // Select all Userdata
       $sqlUser = "SELECT * FROM userdata WHERE id = $userId";
-      $stmt->execute($sqlUser);
-      $resultUserdata = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmtUser->execute($sqlUser);
+      $resultUserdata = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
       // Select City with ID from Userdata
       $sqlCity = "SELECT * FROM city WHERE city_id = $resultUserdata[city_id]";
-      $stmt = $conn->query($sqlCity);
-      $resultCity = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmtCity = $conn->query($sqlCity);
+      $resultCity = $stmtCity->fetch(PDO::FETCH_ASSOC);
 
       
       //initialize testarray for JSON response
