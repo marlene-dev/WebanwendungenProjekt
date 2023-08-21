@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-      <form onsubmit="return validate()" class="form hidden" id="changeData">
+      <form class="form" id="changeData">
         <div class="form_field">
           <label for="name">Name:</label>
           <input id="name" required />
@@ -49,7 +49,7 @@
         <button
           type="submit"
           class="form_button"
-          onclick="sendChange()"
+          id= "sendChange"
         >
           Speichern
         </button>
@@ -59,10 +59,9 @@
         >
           Abbrechen
         </button>
-        <p class="error message hidden">
+        <p class="error message hidden" id="errorMessage">
           Änderungen konnten nicht gespeichert werden.
         </p>
-        <p class="success message hidden">Daten werden gespeichert.</p>
       </form>
     </div>
   </body>

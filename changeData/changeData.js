@@ -1,4 +1,5 @@
-function sendChange (){
+document.getElementById("sendChange").addEventListener("submit", (e) => {
+    e.preventDefault();
     // Create a new XMLHttpRequest instance
     const request = new XMLHttpRequest();
 
@@ -24,7 +25,7 @@ function sendChange (){
 
     // Send the request
     request.send(JSON.stringify(data));    
-}
+});
 
 function exitEdit(){
 
