@@ -46,5 +46,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Setzt den Content-Type und gibt die JSON-Antwort aus
 header("Content-Type: application/json");
 echo json_encode($response);
-
 ?>

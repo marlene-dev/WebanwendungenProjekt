@@ -3,26 +3,26 @@ include 'connectToDatabase.php';
 
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    session_start();
-    if (isset($_SESSION["userId"])) {
-        if (isset($_POST["username"])) {
-        $input_username = $_POST['username'];
+    // Empfange und dekodiere die JSON-Daten
+    $requestData = json_decode(file_get_contents("php://input"), true);
+    if (isset($requestData["userId"])) {
+        if (isset($requestData["username"])) {
+        $input_username = $requestData['username'];
         }
-        if (isset($_POST["email"])) {
-        $input_email = $_POST["email"];
+        if (isset($requestData["email"])) {
+        $input_email = $requestData["email"];
         }
-        if (isset($_POST["streetname"])) {
-        $input_street = $_POST["streetname"];
+        if (isset($requestData["streetname"])) {
+        $input_street = $requestData["streetname"];
         }
-        if (isset($_POST["number"])) {
-            $input_street = $_POST["number"];
+        if (isset($requestData["number"])) {
+            $input_street = $requestData["number"];
         }
-        if (isset($_POST["plz"])) {
-        $input_plz = $_POST["plz"];
+        if (isset($requestData["plz"])) {
+        $input_plz = $requestData["plz"];
         }
-        if (isset($_POST["town"])) {
-        $input_town = $_POST["town"];
+        if (isset($requestData["town"])) {
+        $input_town = $requestData["town"];
         }
         // the list of allowed field names
         $allowed = ["id","username","email", "streetname", "streetnumber"];
@@ -35,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // loop over source data array
         foreach ($allowed as $key) {
-            if (isset($_POST[$key]) && $key != "id")
+            if (isset($requestData[$key]) && $key != "id")
             {
                 $setStr .= "`$key` = :$key,";
-                $params[$key] = $_POST[$key];
+                $params[$key] = $requestData[$key];
             }
         }
         $setStr = rtrim($setStr, ",");
@@ -46,9 +46,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $params['id'] = $_SESSION["userId"];
 
         try {
+            //UPDATE userdata in Database
             $conn->prepare("UPDATE userdata SET $setStr WHERE id = :id")->execute($params);
-            $sqlCity = "SELECT city_id FROM userdata WHERE email = :email AND password = SHA2(:password, 256)";
-
+            // update City in Database
+            $userId = $_SESSION["userId"];
+            $sqlCity = "SELECT city_id FROM city WHERE town = $input_town AND plz = $input_plz";
+            $stmt = $conn->query($sqlCity);
+            
+            // Anzahl der zurückgegebenen Zeilen überprüfen
+            if ($stmt->rowCount() > 0) {
+                $rightCity = $stmt->fetch(PDO::FETCH_ASSOC);
+                $newCityId = $rightCity["city_Id"];
+            } else {
+                $conn->prepare("INSERT INTO city (cityname, plz) VALUES ($input_town, $input_plz");
+            }
             $conn->prepare("UPDATE city SET $setStr WHERE id = :id")->execute($params);
             http_response_code(200);  
             $response = array("message" => "Die Änderung war erfolgreich.");
