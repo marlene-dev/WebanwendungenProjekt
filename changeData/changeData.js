@@ -10,6 +10,7 @@ document.getElementById("sendChange").addEventListener("submit", (e) => {
     const request = new XMLHttpRequest();
 
     const data = {
+      profilePicture: document.getElementById("profilePictureInput").files[0],
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
       street: document.getElementById("street").value,

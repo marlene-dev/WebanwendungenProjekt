@@ -66,3 +66,32 @@ body {
   padding: 5px;
   border-radius: 3px;
 }
+
+.profilePicture {
+  display: flex;
+  align-items: center;
+}
+
+.profilePicture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid magenta;
+}
+#profilePictureInput {
+  display: none;
+}
+
+/* Style the custom button to look like a file input */
+.customButton {
+  background-color: magenta;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.customButton:hover {
+  background-color: darkmagenta;
+}
