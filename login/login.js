@@ -6,7 +6,7 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
   };
-  request.open("POST", "Backend/login.php");
+  request.open("POST", "/Backend/login.php");
   // Setze eine Callback-Funktion für die Antwort
   request.onload = function () {
     if (request.status === 200) {
@@ -18,15 +18,3 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   };
   request.send(JSON.stringify(data));
 });
-
-function hide(hide) {
-  const hideElement = document.getElementById(hide);
-  // Change the HTML file displayed
-  hideElement.classList.add("hidden");
-}
-//zwingt Elemente auf Website die vorher verborgen waren
-
-function show(show) {
-  const showElement = document.getElementById(show);
-  showElement.classList.remove("hidden");
-}
