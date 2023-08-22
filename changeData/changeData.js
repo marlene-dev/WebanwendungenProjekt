@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const request = new XMLHttpRequest();
 
     const data = {
-      profilePicture: document.getElementById("profilePictureInput").files[0],
+      profilepic: document.getElementById("profilepic").value,
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
       streetname: document.getElementById("street").value,
@@ -46,6 +46,7 @@ window.onload = function (){
   request.onload = function () {
     if (request.status === 200) {
       const responseData = JSON.parse(request.responseText);
+      document.getElementById("profilepic").value = responseData.profilepic;
       document.getElementById("name").value = responseData.username;
       document.getElementById("email").value = responseData.email;
       document.getElementById("street").value = responseData.streetname;
