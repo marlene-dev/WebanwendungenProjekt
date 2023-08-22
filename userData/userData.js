@@ -29,7 +29,7 @@ window.onload = function (){
   request.onload = function () {
     if (request.status === 200) {
       const responseData = JSON.parse(request.responseText);
-      document.getElementById("profileImage").src = responseData.profilePictureUrl;
+      document.getElementById("profilepic").innerHTML = responseData.profilePictureUrl;
       document.getElementById("name").innerHTML = responseData.username;
       document.getElementById("email").innerHTML = responseData.email;
       document.getElementById("street").innerHTML = responseData.streetname;
