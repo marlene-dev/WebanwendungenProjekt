@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("changeData").addEventListener("submit", (e) => {
     e.preventDefault();
-    const regexPattern = /^[0-9]{5}/;
+    const regexPattern = /^[a-zA-Z0-9\s-]+$/;
     //funktion verlassen wenn keine gültige Postleitzahl
     if (!regexPattern.test(document.getElementById("plz").value)) {
       document.getElementById("badPlz").classList.remove("hidden");
