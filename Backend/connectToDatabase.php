@@ -1,5 +1,4 @@
 <?php
-
 $hostname = "localhost";
 $userName = "root";
 $password = "";
@@ -23,5 +22,4 @@ function startSession( $userId) {
     session_start();
     $_SESSION["userId"] = $userId;
 }
-
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Empfange und dekodiere die JSON-Daten
     $requestData = json_decode(file_get_contents("php://input"), true);
@@ -42,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = array("message" => "Ungültige HTTP-Anfrage");
     http_response_code(405);
 }
-
 // Setzt den Content-Type und gibt die JSON-Antwort aus
 header("Content-Type: application/json");
 echo json_encode($response);
