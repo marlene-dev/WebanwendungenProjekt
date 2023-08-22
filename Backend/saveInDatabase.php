@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION["userId"])){
 
         // the list of allowed field names
-        $allowed = ["id","username","email", "streetname", "streetnumber", "cityname", "plz"];
+        $allowed = ["id","username","email", "streetname", "streetnumber", "cityname", "plz", "profilepicture"];
         $params = [];
 
         // initialize a string with `fieldname` = :placeholder pairs

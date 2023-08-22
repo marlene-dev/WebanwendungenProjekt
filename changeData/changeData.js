@@ -46,7 +46,7 @@ window.onload = function (){
   request.onload = function () {
     if (request.status === 200) {
       const responseData = JSON.parse(request.responseText);
-      document.getElementById("profilepic").value = responseData.profilepic;
+      document.getElementById("profilepic").value = responseData.profilepicture;
       document.getElementById("name").value = responseData.username;
       document.getElementById("email").value = responseData.email;
       document.getElementById("street").value = responseData.streetname;
