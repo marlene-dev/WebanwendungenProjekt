@@ -10,23 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
       // Create a new XMLHttpRequest instance
       const request = new XMLHttpRequest();
 
-    const data = {
-      profilepic: document.getElementById("profilepic").value,
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      streetname: document.getElementById("street").value,
-      streetnumber: document.getElementById("number").value,
-      plz: document.getElementById("plz").value,
-      town: document.getElementById("town").value,
-    };
-    // Configure the request: Method and URL
-    request.open("POST", "/Backend/saveInDatabase.php", true);
+      const data = {
+        profilepic: document.getElementById("profilepic").value,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        streetname: document.getElementById("street").value,
+        streetnumber: document.getElementById("number").value,
+        plz: document.getElementById("plz").value,
+        town: document.getElementById("town").value,
+      };
+      // Configure the request: Method and URL
+      request.open("POST", "/Backend/saveInDatabase.php", true);
 
       // Set up a callback function to handle the response
       request.onload = function () {
         if (request.status === 200) {
           console.log("Daten wurden geändert");
-          alert("geänderte Daten wurden gespeichert.")
+          alert("Geänderte Daten wurden gespeichert.");
           window.location.replace("/userData/");
         } else {
           document.getElementById("badPlz").classList.add("hidden");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Funktion zum Abrufen und Anzeigen der Nutzerdaten
-window.onload = function (){
+window.onload = function () {
   const request = new XMLHttpRequest();
   request.open("GET", "/Backend/getUserData.php", true);
   request.onload = function () {
@@ -59,7 +59,7 @@ window.onload = function (){
     }
   };
   request.send();
-}
+};
 
 function exitEdit() {
   window.location.replace("/userData/");

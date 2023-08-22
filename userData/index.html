@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutzerdaten bearbeiten</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
-  <link rel="stylesheet" href="../Style.css">
-  <script src="./userData.js"></script>
-</head>
-<body>
-  <div class="form" id="userData">
-    <div class="userData">
-      <div class="userDetail">
-        <label>Profile Picture:</label>
-        <div id= profilepic></div>
-            </div>
-      <div class="userDetail">
-        <label>Name:</label>
-        <div id="name"></div>
-      </div>
-      <div class="userDetail">
-        <label>Email:</label>
-        <div id="email"></div>
-      </div>
-      <div class="userDetail">
-        <label>Straße:</label>
-        <div id="street"></div>
-      </div>
-      <div class="userDetail">
-        <label>Hausnummer:</label>
-        <div id="number"></div>
-      </div>
-      <div class="userDetail">
-        <label>Postleitzahl:</label>
-        <div id="plz"></div>
-      </div>
-      <div class="userDetail">
-        <label>Stadt:</label>
-        <div id="town"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutzerdaten bearbeiten</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../Style.css" />
+    <script src="./userData.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form" id="userData">
+        <div class="userData">
+          <div class="userDetail">
+            <label>Profile Picture:</label>
+            <div id="profilepic"></div>
+          </div>
+          <div class="userDetail">
+            <label>Name:</label>
+            <div id="name"></div>
+          </div>
+          <div class="userDetail">
+            <label>Email:</label>
+            <div id="email"></div>
+          </div>
+          <div class="userDetail">
+            <label>Straße:</label>
+            <div id="street"></div>
+          </div>
+          <div class="userDetail">
+            <label>Hausnummer:</label>
+            <div id="number"></div>
+          </div>
+          <div class="userDetail">
+            <label>Postleitzahl:</label>
+            <div id="plz"></div>
+          </div>
+          <div class="userDetail">
+            <label>Stadt:</label>
+            <div id="town"></div>
+          </div>
+        </div>
+        <button class="form_button" onclick="changeData()">Bearbeiten</button>
+        <button class="form_button" id="logout">Logout</button>
+        <p class="message error hidden" id="errorMessage">
+          Aktion fehlgeschlagen. Bitte versuche es später nochmal.
+        </p>
       </div>
     </div>
-    <button class="form_button" onclick="changeData()">Bearbeiten</button>
-    <button class="form_button" id="logout">Logout</button>
-    <p class="message error hidden" id="errorMessage">
-      Aktion fehlgeschlagen. Bitte versuche es später nochmal.
-    </p>
-  </div>
-  </div>
-</body>
+  </body>
 </html>
