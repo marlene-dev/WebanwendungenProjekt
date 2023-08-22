@@ -29,31 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             //UPDATE userdata in Database
             $conn->prepare("UPDATE userdata SET $setStr WHERE id = :id")->execute($params);
-
-        // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // $parameter = array("plz" => $requestData["plz"],
-        //                     "cityname" => $requestData["town"]);
-        // $city = $requestData["town"];
-        // $plz = $requestData["plz"];
-        // $userId = $_SESSION["userId"];
-        // try {
-        //     //update City in Database
-        //     $sqlCity = "SELECT city_id FROM city WHERE cityname = $requestData[town] AND `plz` = $plz";
-        //     $query = $conn->prepare($sqlCity);
-        //     $query->execute();
-        //     $stmt = $query->fetch(PDO::FETCH_ASSOC);
-        //     // Anzahl der zurückgegebenen Zeilen überprüfen
-        //     if ($stmt->rowCount() > 0) {
-        //         $newCityId = $stmt["city_Id"];
-        //     } else {
-        //         $conn->prepare("INSERT INTO city (cityname, plz) VALUES ($input_town, $input_plz")->execute();
-        //         $stmt = $conn->query($sqlCity);
-        //         $rightCity = $stmt->fetch(PDO::FETCH_ASSOC);
-        //         $newCityId = $rightCity["city_Id"];
-        //     }
-        //     $conn->prepare("UPDATE userdata SET city_id = $newCityId WHERE id = $userId")->execute();
-
             //UPDATE erfolgreich
             http_response_code(200);  
             $response = array("message" => "Die Änderung war erfolgreich.");  
@@ -76,5 +51,4 @@ http_response_code(405);
 // Setze den Content-Type und gib die JSON-Antwort aus
 header("Content-Type: application/json");
 echo json_encode($response);
-
 ?>
