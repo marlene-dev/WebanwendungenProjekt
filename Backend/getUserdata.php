@@ -9,17 +9,17 @@ if (isset($_SESSION["userId"])){
       $stmtUser = $conn->query($sqlUser);
       $resultUserdata = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
-      // Select City with ID from Userdata
-      $sqlCity = "SELECT * FROM city WHERE city_id = $resultUserdata[city_id]";
-      $stmtCity = $conn->query($sqlCity);
-      $resultCity = $stmtCity->fetch(PDO::FETCH_ASSOC);
+      // // Select City with ID from Userdata
+      // $sqlCity = "SELECT * FROM city WHERE city_id = $resultUserdata[city_id]";
+      // $stmtCity = $conn->query($sqlCity);
+      // $resultCity = $stmtCity->fetch(PDO::FETCH_ASSOC);
 
       $arrayData = ["username" => $resultUserdata["username"], 
               "email" => $resultUserdata["email"], 
               "streetname" => $resultUserdata["streetname"],
               "streetnumber" => $resultUserdata["streetnumber"],
-              "plz" => $resultCity["plz"],
-              "town" => $resultCity["cityname"],
+              "plz" => $resultUserdata["plz"],
+              "town" => $resultUserdata["cityname"],
               "profilepicture" => $resultUserdata["profilepicture"],
             ];
       // response 200 with json data

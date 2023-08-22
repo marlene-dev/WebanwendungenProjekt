@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const request = new XMLHttpRequest();
 
     const data = {
-      profilepic: document.getElementById("profilepic").value,
-      name: document.getElementById("name").value,
+      profilepicture: document.getElementById("profilepic").value,
+      username: document.getElementById("name").value,
       email: document.getElementById("email").value,
       streetname: document.getElementById("street").value,
       streetnumber: document.getElementById("number").value,
       plz: document.getElementById("plz").value,
-      town: document.getElementById("town").value,
+      cityname: document.getElementById("town").value,
     };
     // Configure the request: Method and URL
     request.open("POST", "/Backend/saveInDatabase.php", true);

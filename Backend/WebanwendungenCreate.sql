@@ -16,21 +16,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
-DROP TABLE IF EXISTS `mydb`.`userdata` ;
-
--- -----------------------------------------------------
--- Table `mydb`.`city`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`city` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`city` (
-  `city_id` INT NOT NULL AUTO_INCREMENT,
-  `cityname` VARCHAR(45) NOT NULL,
-  `plz` CHAR(5) NOT NULL,
-  PRIMARY KEY (`city_id`),
-  UNIQUE INDEX `city_id_UNIQUE` (`city_id` ASC) )
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`userdata`
@@ -42,17 +27,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`userdata` (
   `username` VARCHAR(45) NOT NULL,
   `password` BINARY(64) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `city_id` INT NOT NULL,
+  `cityname` VARCHAR(45) NOT NULL,
+  `plz` CHAR(5) NOT NULL,
   `streetname` VARCHAR(45) NOT NULL,
   `streetnumber` VARCHAR(10) NOT NULL,
-  `profilepicture` VARCHAR(200) NULL,
+  `profilepicture` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
-  CONSTRAINT `city_id`
-    FOREIGN KEY (`city_id`)
-    REFERENCES `mydb`.`city` (`city_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) 
+)
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
