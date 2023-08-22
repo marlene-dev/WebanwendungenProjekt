@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
       town: document.getElementById("town").value,
     };
     // Configure the request: Method and URL
-    request.open("GET", "/Backend/saveInDatabase.php", true);
+    request.open("POST", "/Backend/saveInDatabase.php", true);
 
       // Set up a callback function to handle the response
       request.onload = function () {

@@ -24,8 +24,4 @@ function startSession( $userId) {
     $_SESSION["userId"] = $userId;
 }
 
-function destroySession () {
-    session_destroy();
-}
-
 ?>

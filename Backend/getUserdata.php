@@ -14,24 +14,14 @@ if (isset($_SESSION["userId"])){
       $stmtCity = $conn->query($sqlCity);
       $resultCity = $stmtCity->fetch(PDO::FETCH_ASSOC);
 
-      
-      //initialize testarray for JSON response
       $arrayData = ["username" => $resultUserdata["username"], 
-                    "email" => $resultUserdata["email"], 
-                    "streetname" => $resultUserdata["streetname"],
-                    "streetnumber" => $resultUserdata["streetnumber"],
-                    "plz" => $resultCity["plz"],
-                    "town" => $resultCity["cityname"],
-                    "profilepicture" => $resultUserdata["profilepicture"],
-                  ];
-
-      $arrayDataTest = ["username" => "testName", 
-      "email" => "testEmail",
-      "streetname" => "testStreet",
-      "number" => "123",
-      "plz" => "testPlz",
-      "town" => "testTown",
-      ];
+              "email" => $resultUserdata["email"], 
+              "streetname" => $resultUserdata["streetname"],
+              "streetnumber" => $resultUserdata["streetnumber"],
+              "plz" => $resultCity["plz"],
+              "town" => $resultCity["cityname"],
+              "profilepicture" => $resultUserdata["profilepicture"],
+            ];
       // response 200 with json data
       http_response_code(200);
       header('Content-type: application/json');
