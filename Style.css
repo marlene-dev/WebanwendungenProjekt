@@ -1,10 +1,12 @@
-body {
-  font-family: "Roboto", sans-serif;
-}
-/* Common styles */
 .hidden{
   display: none !important;
 }
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to bottom, #66c2ff, #f2f2f2);  /* Gradient background */
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -15,21 +17,27 @@ body {
 .form {
   width: 400px;
   padding: 30px;
-  background-color: #eeeeee;
-  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7);/* Slightly transparent background */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
 }
+/* Common styles */
+
 
 .form_field {
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .form_field label {
   display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .form_field input {
   width: 95%;
   padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
 }
 
@@ -39,19 +47,26 @@ body {
   padding: 10px;
   margin-top: 15px;
   font-size: 150%;
-  background-color: magenta;
+  background-color: #ff6b6b;
   border-radius: 5px;
+  color: white;
+  border: none;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.form_button:hover {
+  background-color: #e05252;
 }
 .message {
   text-align: center;
+  margin-top: 10px;
 }
 .error {
   color: red;
 }
 
 .success {
-  color: magenta;
+  color: #66c2ff;
 }
 .userDetail {
   margin-bottom: 20px;
@@ -65,4 +80,36 @@ body {
   background-color: #f0f0f0;
   padding: 5px;
   border-radius: 3px;
+}
+
+.profilePicture {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profilePicture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff6b6b;
+}
+#profilePictureInput {
+  display: none;
+}
+
+/* Style the custom button to look like a file input */
+.customButton {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.customButton:hover {
+  background-color: #e05252;
 }

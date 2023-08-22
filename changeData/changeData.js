@@ -10,16 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
       // Create a new XMLHttpRequest instance
       const request = new XMLHttpRequest();
 
-      const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        streetname: document.getElementById("street").value,
-        streetnumber: document.getElementById("number").value,
-        plz: document.getElementById("plz").value,
-        town: document.getElementById("town").value,
-      };
-      // Configure the request: Method and URL
-      request.open("POST", "/Backend/saveInDatabase.php", true);
+    const data = {
+      profilePicture: document.getElementById("profilePictureInput").files[0],
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      streetname: document.getElementById("street").value,
+      streetnumber: document.getElementById("number").value,
+      plz: document.getElementById("plz").value,
+      town: document.getElementById("town").value,
+    };
+    // Configure the request: Method and URL
+    request.open("GET", "/Backend/saveInDatabase.php", true);
 
       // Set up a callback function to handle the response
       request.onload = function () {
